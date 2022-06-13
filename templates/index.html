@@ -1,19 +1,15 @@
 {% extends 'base.html' %}
 
-{% block head %}
-
-{% endblock %}
-
 {% block body %}
 <div class="content">
-    <h1 style="text-align: center">Mano transporto priemoniu techninis aptarnavimas</h1>
+    <h1 style="text-align: center">Mano transporto priemonių techninis aptarnavimas</h1>
 
     <table>
         <tr>
-            <th>Transporto priemone</th>
+            <th>Transporto priemonė</th>
             <th>Atliktas darbas</th>
             <th>Atlikimo data</th>
-            <th>TP Kilometrazas</th>
+            <th>TP Kilometražas</th>
             <th>Veiksmai</th>
         </tr>
         {% for task in tasks %}
@@ -23,22 +19,15 @@
                 <td>{{ task.date_created.date() }}</td>
                 <td>{{ task.completed }}</td>
                 <td>
-                    <a href="/delete/{{task.id}}">Istrinti</a>
+                    <a href="/delete/{{task.id}}">Ištrinti</a>
                     <br>
-                    <a href="/update/{{task.id}}">Papildyti</a>
+                    <a href="/update/{{task.id}}">Atnaujinti</a>
                 </td>
             </tr>
         {% endfor %}
     </table>
-
     <form action="/" method="POST">
-        <label for="vehicle">Transporto priemone:</label>
-        <input type="text" name="vehicle" id="vehicle">
-        <label for="content">Atliktas darbas:</label>
-        <input type="text" name="content" id="content">
-        <label for="completed">TP Kilometrazas:</label>
-        <input type="text" name="completed" id="completed">
-        <input type="submit" value="Prideti">
+        <a href="/add">Pridėti Transporto Priemonę</a>
     </form>
 </div>
 {% endblock %}

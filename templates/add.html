@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="content">
+    <<h1 style="text-align: center">Papildyti</h1>
+
+    <form action="/add" method="POST">
+        <label for="vehicle">Transporto priemonė:</label>
+        <input type="text" name="vehicle" id="vehicle">
+        <label for="content">Atliktas darbas:</label>
+        <input type="text" name="content" id="content">
+        <label for="completed">TP Kilometražas:</label>
+        <input type="text" name="completed" id="completed">
+        <input type="submit" value="Pridėti">
+    </form>
+    {% endblock %}
+</div>

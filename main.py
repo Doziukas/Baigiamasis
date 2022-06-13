@@ -25,8 +25,14 @@ class Donelist(db.Model):
         return '<task %r>' % self.id
 
 
-@app.route('/', methods=['POST', 'GET'])
+@app.route('/')
 def index():
+    tasks = Donelist.query.order_by(Donelist.date_created).all()
+    return render_template('index.html', tasks=tasks)
+
+
+@app.route('/add', methods=['POST', 'GET'])
+def add():
     if request.method == 'POST':
         task_vehicle = request.form['vehicle']
         task_content = request.form['content']
@@ -38,11 +44,10 @@ def index():
             db.session.commit()
             return redirect('/')
         except:
-            return 'Iskilo problema'
+            return 'Iškilo problema'
 
     else:
-        tasks = Donelist.query.order_by(Donelist.date_created).all()
-        return render_template('index.html', tasks=tasks)
+        return render_template('add.html')
 
 
 @app.route('/delete/<int:id>')
@@ -54,7 +59,7 @@ def delete(id):
         db.session.commit()
         return redirect('/')
     except:
-        return 'Iskilo problema istrinant irasa'
+        return 'Iškilo problema ištrinant įrašą'
 
 
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
@@ -70,7 +75,7 @@ def update(id):
             db.session.commit()
             return redirect('/')
         except:
-            return 'Iskilo problema atnaujinant informacija'
+            return 'Iškilo problema atnaujinant informacija'
 
     else:
         return render_template('update.html', task=task)

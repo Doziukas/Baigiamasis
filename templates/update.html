@@ -1,44 +1,17 @@
 {% extends 'base.html' %}
 
-{% block head %}
-
-{% endblock %}
-
 {% block body %}
 <div class="content">
-    <<h1 style="text-align: center">Papildyti</h1>
-
-    <table>
-        <tr>
-             <th>Transporto priemone</th>
-            <th>Atliktas darbas</th>
-            <th>Atlikimo data</th>
-            <th>TP Kilometrazas</th>
-            <th>Veiksmai</th>
-        </tr>
-        {% for task in tasks %}
-            <tr>
-                <td>{{ task.vehicle }}</td>
-                <td>{{ task.content }}</td>
-                <td>{{ task.date_created.date() }}</td>
-                <td>{{ task.completed }}</td>
-                <td>
-                    <a href="/delete/{{task.id}}">Istrinti</a>
-                    <br>
-                    <a href="/update/{{task.id}}">Papildyti</a>
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
+    <<h1 style="text-align: center">Atnaujinti</h1>
 
     <form action="/update/{{task.id}}" method="POST">
-        <label for="vehicle">Transporto priemone:</label>
+        <label for="vehicle">Transporto priemonė:</label>
         <input type="text" name="vehicle" id="vehicle" value="{{task.vehicle}}">
         <label for="content">Atliktas darbas:</label>
         <input type="text" name="content" id="content" value="{{task.content}}">
-        <label for="completed">TP Kilometrazas:</label>
+        <label for="completed">TP Kilometražas:</label>
         <input type="text" name="completed" id="completed" value="{{task.completed}}">
-        <input type="submit" value="Update">
+        <input type="submit" value="Atnaujinti">
     </form>
     {% endblock %}
 </div>
