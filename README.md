@@ -1,4 +1,1 @@
 # Baigiamasis
-# Baigiamasis
-# Baigiamasis
-# Baigiamasis
