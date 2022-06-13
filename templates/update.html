@@ -6,11 +6,11 @@
 
     <form action="/update/{{task.id}}" method="POST">
         <label for="vehicle">Transporto priemonė:</label>
-        <input type="text" name="vehicle" id="vehicle" value="{{task.vehicle}}">
+        <input id="vehicle" name="vehicle" type="text" value="{{task.vehicle}}">
         <label for="content">Atliktas darbas:</label>
-        <input type="text" name="content" id="content" value="{{task.content}}">
+        <input id="content" name="content" type="text" value="{{task.content}}">
         <label for="completed">TP Kilometražas:</label>
-        <input type="text" name="completed" id="completed" value="{{task.completed}}">
+        <input id="completed" name="completed" type="text" value="{{task.completed}}">
         <input type="submit" value="Atnaujinti">
     </form>
     {% endblock %}

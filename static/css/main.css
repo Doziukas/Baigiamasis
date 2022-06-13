@@ -1,7 +1,7 @@
 body, html {
     margin: 0;
-    font-family: sans-serif;
-    background-color: lightgreen;
+    font-family: 'Open sans', sans-serif;
+    background-color: #ccffff;
 }
 
 .content {
@@ -41,4 +41,10 @@ td {
 
 #completed {
     width: 55%;
+}
+
+.btn{
+    padding:10px 15px;
+    margin:20px auto;
+    display: block
 }
