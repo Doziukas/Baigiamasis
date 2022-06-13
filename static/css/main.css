@@ -6,7 +6,7 @@ body, html {
 
 .content {
     margin: 0 auto;
-    width: 400px;
+    width: 500px;
 }
 
 table, td, th {
@@ -31,6 +31,14 @@ td {
     margin-top: 20px;
 }
 
+#vehicle {
+    width: 66%;
+}
+
 #content {
-    width: 70%;
+    width: 75%;
+}
+
+#completed {
+    width: 60%;
 }

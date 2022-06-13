@@ -11,11 +11,13 @@ db = SQLAlchemy(app)
 class Donelist(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
+    vehicle = db.Column(db.String(200), nullable=False)
     content = db.Column(db.String(200), nullable=False)
     completed = db.Column(db.Integer, default=0)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
-    def __init__(self,content, completed):
+    def __init__(self,vehicle, content, completed):
+        self.vehicle = vehicle
         self.content = content
         self.completed = completed
 
@@ -26,15 +28,17 @@ class Donelist(db.Model):
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
+        task_vehicle = request.form['vehicle']
         task_content = request.form['content']
-        new_task = Donelist(content=task_content)
+        task_completed = request.form['completed']
+        new_task = Donelist(vehicle=task_vehicle, content=task_content, completed=task_completed)
 
         try:
             db.session.add(new_task)
             db.session.commit()
             return redirect('/')
         except:
-            return 'Nera problemu'
+            return 'Iskilo problema'
 
     else:
         tasks = Donelist.query.order_by(Donelist.date_created).all()
@@ -58,7 +62,9 @@ def update(id):
     task = Donelist.query.get_or_404(id)
 
     if request.method == 'POST':
+        task.vehicle = request.form['vehicle']
         task.content = request.form['content']
+        task.completed = request.form['completed']
 
         try:
             db.session.commit()
